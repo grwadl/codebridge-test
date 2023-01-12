@@ -10,9 +10,10 @@ class BlogService extends BaseService<Blog> {
   }
 
   async get(opt?: Record<string, string>, query?: Record<string, string>): Promise<Blog[]> {
-    if (!query) return getRequest<Blog[]>(`${this.baseUrl}`, opt)
+    if (!query) return getRequest<Blog[]>(`${this.baseUrl}/articles/100`, opt)
 
     const url = new URL(this.baseUrl)
+
     Object.entries(query).forEach(([key, value]) => url.searchParams.append(key, value))
     return getRequest<Blog[]>(url, opt)
   }
