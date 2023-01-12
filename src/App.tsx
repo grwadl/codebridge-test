@@ -1,5 +1,5 @@
 import { ThemeProvider } from '@mui/material'
-import Header from './compoenents/header/Header'
+import Header from './components/header/Header'
 import { theme } from './material.theme'
 
 function App() {
