@@ -1,6 +1,6 @@
 import { getRequest } from '@/lib/utils/'
 import { BaseService } from '../BaseService'
-import Blog from './types/blog'
+import { Blog } from './types/blog'
 
 class BlogService extends BaseService<Blog> {
   baseUrl = import.meta.env.VITE_BLOG_API_BASE_URL
@@ -17,4 +17,4 @@ class BlogService extends BaseService<Blog> {
   }
 }
 
-export default new BlogService()
+export const blogService = new BlogService()

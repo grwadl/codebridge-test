@@ -1,4 +1,4 @@
-export default interface Blog {
+export interface Blog {
   id: number
   featured: boolean
   title: 'string'
