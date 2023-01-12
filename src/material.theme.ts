@@ -2,20 +2,6 @@ import { createTheme } from '@mui/material'
 
 const fontUrl = 'https://fonts.googleapis.com/css2?family=Montserrat&display=swap'
 
-declare module '@mui/material/styles' {
-  interface Theme {
-    status: {
-      danger: string
-    }
-  }
-
-  interface ThemeOptions {
-    status?: {
-      danger?: string
-    }
-  }
-}
-
 export const theme = createTheme({
   typography: {
     fontFamily: "'Montserrat', sans-serif"

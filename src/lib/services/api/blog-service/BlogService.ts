@@ -8,6 +8,7 @@ class BlogService extends BaseService<Blog> {
   async getOne(id: number): Promise<Blog> {
     return getRequest<Blog>(`${this.baseUrl}/${id}`)
   }
+
   async get(opt?: Record<string, string>, query?: Record<string, string>): Promise<Blog[]> {
     if (!query) return getRequest<Blog[]>(`${this.baseUrl}`, opt)
 
