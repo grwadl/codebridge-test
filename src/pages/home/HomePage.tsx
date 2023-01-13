@@ -1,4 +1,5 @@
 import { CardList } from '@/components/card/'
+import Header from '@/components/header/Header'
 import { fetchBlogs, useTypedDispatch, useTypedSelector } from '@/redux'
 import { useEffect } from 'react'
 
@@ -12,6 +13,7 @@ const Homepage = () => {
 
   return (
     <div>
+      <Header />
       <CardList blogs={blogs} />
     </div>
   )
