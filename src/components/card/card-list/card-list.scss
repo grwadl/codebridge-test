@@ -1,0 +1,11 @@
+.blog-list {
+  --gap: 45px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap);
+  margin-top: var(--gap);
+
+  .card-item {
+    flex: 0 1 calc((100% / 3) - var(--gap));
+  }
+}
