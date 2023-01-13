@@ -1,11 +1,11 @@
-import { searchParams } from '@/lib/services/params'
+import { blogParams } from '@/lib/services/params/blog-params/blog-params'
 import { changeQueryAction, fetchBlogs } from '@/redux/actions'
 import { createReducer } from '@reduxjs/toolkit'
 import { BlogReducer } from './types/initial-value'
 
 const initialValue: BlogReducer = {
   blogs: [],
-  searchedValue: searchParams.getOne('title_contains') || searchParams.getOne('summary_contains'),
+  searchedValue: blogParams.getSearchedBlogsQuery(),
   isLoading: true
 }
 

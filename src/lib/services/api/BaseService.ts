@@ -1,7 +1,7 @@
 export abstract class BaseService<T> {
   abstract baseUrl: string
 
-  abstract getOne(id: number): Promise<unknown>
+  abstract getOne(id: number): Promise<T>
 
-  abstract get(opt: unknown): Promise<unknown>
+  abstract get(opt: RequestInit): Promise<T[]>
 }

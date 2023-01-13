@@ -1,4 +1,5 @@
 import { Blog, blogService } from '@/lib/services/api'
+import { blogParams } from '@/lib/services/params'
 import { cached } from '@/lib/utils'
 import { AsyncThunkConfig } from '@/redux/types'
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
@@ -11,7 +12,7 @@ const cachedFetchBlogs = cached<Blog[]>()
 const fetchBlogs = createAsyncThunk<ThunkFetchBlogsReturnType, string, AsyncThunkConfig>(
   BlogActions.GET_BLOGS,
   async (searchedValue) => {
-    const params = { title_contains: searchedValue, summary_contains: searchedValue }
+    const params = blogParams.generateSearchTitleAndDescription(searchedValue) ?? undefined
 
     const blogs = await cachedFetchBlogs(() => blogService.get({}, params), searchedValue)
 

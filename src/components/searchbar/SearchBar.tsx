@@ -1,6 +1,7 @@
 import { useDebounce } from '@/hooks'
 import { useFirstRender } from '@/hooks/useFirstRender'
-import { searchParams } from '@/lib/services/params'
+import { blogParams } from '@/lib/services/params'
+import { BlogSearchParams } from '@/lib/services/params/blog-params/types'
 import { fetchBlogs, useTypedDispatch } from '@/redux'
 import { InputLabel } from '@mui/material'
 import React, { useState } from 'react'
@@ -8,14 +9,15 @@ import SearchInput from '../UI/input-base/SearchInput'
 import { inputStyles, labelStyles } from './mock/inline-styles'
 
 const SearchBar = () => {
-  const [searchValue, setSearchValue] = useState(() => searchParams.getOne('title_contains'))
+  const [searchValue, setSearchValue] = useState(() => blogParams.getSearchedBlogsQuery())
   const dispatch = useTypedDispatch()
   const isFirstRender = useFirstRender()
 
   const onChangeSearchValue = (e: React.ChangeEvent<HTMLInputElement>): void => setSearchValue(e.target.value)
 
   const debouncedFunc = (): void => {
-    searchParams.replaceWindowParams({ title_contains: searchValue, summary_contains: searchValue })
+    const newParams = blogParams.generateSearchTitleAndDescription(searchValue)
+    blogParams.replaceWindowSearch<BlogSearchParams | null>(newParams)
     dispatch(fetchBlogs(searchValue))
   }
 
