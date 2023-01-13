@@ -1,6 +1,13 @@
-type Props = {}
+import { fetchBlogs, useTypedDispatch } from '@/redux'
+import { useEffect } from 'react'
 
-const Homepage = (props: Props) => {
+const Homepage = () => {
+  const dispatch = useTypedDispatch()
+
+  useEffect(() => {
+    dispatch(fetchBlogs())
+  }, [])
+
   return <div>Homepage</div>
 }
 

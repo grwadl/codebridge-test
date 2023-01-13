@@ -1,2 +1,2 @@
 export * from './blog-actions'
-export * from './types/blog-action.enum'
+export * from './types'
