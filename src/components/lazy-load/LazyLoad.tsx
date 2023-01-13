@@ -1,4 +1,4 @@
-import { useLazyLoading } from '@/hooks/useLazyLoading'
+import { useLazyLoading } from '@/hooks/'
 import { useRef, useState } from 'react'
 import './lazy-load.scss'
 

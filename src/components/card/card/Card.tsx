@@ -1,7 +1,7 @@
 import placeholder from '@/assets/placeholder.png'
 import { LazyLoad } from '@/components/lazy-load/LazyLoad'
 import { Blog } from '@/lib/services/api'
-import { Button, Card, CardActions, CardContent, Typography } from '@mui/material'
+import { Button, Card, CardActions, CardContent } from '@mui/material'
 import { Link } from 'react-router-dom'
 import './card.scss'
 
@@ -13,12 +13,8 @@ const BlogCard = (props: Blog) => {
       <Card sx={{ maxWidth: '100%' }}>
         <LazyLoad placeholder={placeholder} src={imageUrl} className="card-news-image" alt={title} />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
-            {title}
-          </Typography>
-          <Typography variant="body2" color="text.secondary">
-            {summary}
-          </Typography>
+          <h5 className="card-title">{title}</h5>
+          <p className="card-summary">{summary}</p>
         </CardContent>
         <CardActions>
           <Button size="small">Learn More</Button>
