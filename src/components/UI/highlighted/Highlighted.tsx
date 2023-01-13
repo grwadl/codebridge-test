@@ -1,4 +1,9 @@
-export const highlightText = (text: string, highlightValue: string) => {
+type Props = {
+  text: string
+  highlightValue: string
+}
+
+export const Highlighted = ({ highlightValue, text }: Props) => {
   const splittedText = text.split(new RegExp(`(${highlightValue})`, 'gi'))
   return (
     <>
