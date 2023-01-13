@@ -1,8 +1,7 @@
 import { useDebounce } from '@/hooks'
 import { useFirstRender } from '@/hooks/useFirstRender'
 import { searchParams } from '@/lib/services/params'
-import { useTypedDispatch } from '@/redux'
-import { changeQueryAction } from '@/redux/actions/query-actions'
+import { fetchBlogs, useTypedDispatch } from '@/redux'
 import { InputLabel } from '@mui/material'
 import React, { useState } from 'react'
 import SearchInput from '../UI/input-base/SearchInput'
@@ -15,7 +14,12 @@ const SearchBar = () => {
 
   const onChangeSearchValue = (e: React.ChangeEvent<HTMLInputElement>): void => setSearchValue(e.target.value)
 
-  useDebounce(() => !isFirstRender && dispatch(changeQueryAction(searchValue)), [searchValue], 300)
+  const debouncedFunc = (): void => {
+    searchParams.replaceWindowParams({ title_contains: searchValue, summary_contains: searchValue })
+    dispatch(fetchBlogs(searchValue))
+  }
+
+  useDebounce(debouncedFunc, [searchValue], isFirstRender ? 0 : 300)
 
   return (
     <header className="header">

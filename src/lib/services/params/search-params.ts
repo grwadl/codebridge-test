@@ -15,6 +15,11 @@ class SearchParams {
     Object.entries(params).forEach(([key, value]) => value && urlParams.append(key, String(value)))
     return urlParams.toString()
   }
+
+  replaceWindowParams<T extends Record<string, unknown>>(params: T): void {
+    const newSearchParams = this.parseParams(params)
+    history.replaceState(null, '', `${location.origin}${newSearchParams ? '?' + newSearchParams : ''}`)
+  }
 }
 
 export const searchParams = new SearchParams()

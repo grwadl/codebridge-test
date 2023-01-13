@@ -4,11 +4,10 @@ import { useEffect } from 'react'
 
 export const useFetchBlogsOnChangedQuery = () => {
   const dispatch = useTypedDispatch()
-  const { query } = useTypedSelector((state) => state.query)
+  const { searchedValue } = useTypedSelector((state) => state.blog)
 
   useEffect(() => {
-    const newSearchParams = searchParams.parseParams({ title_contains: query, summary_contains: query })
-    history.replaceState(null, '', `${location.origin}${newSearchParams ? '?' + newSearchParams : ''}`)
-    dispatch(fetchBlogs(query))
-  }, [query])
+    searchParams.replaceWindowParams({ title_contains: searchedValue, summary_contains: searchedValue })
+    dispatch(fetchBlogs(searchedValue))
+  }, [searchedValue])
 }
