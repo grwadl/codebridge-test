@@ -1,11 +1,11 @@
-import { blogService } from '@/lib/services/api'
+import { fetchBlogs, useTypedDispatch } from '@/redux'
 import { useEffect } from 'react'
 
-type Props = {}
+const Homepage = () => {
+  const dispatch = useTypedDispatch()
 
-const Homepage = (props: Props) => {
   useEffect(() => {
-    blogService.get().then((res) => console.log(res))
+    dispatch(fetchBlogs())
   }, [])
 
   return <div>Homepage</div>
