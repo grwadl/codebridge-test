@@ -1,6 +1,5 @@
-export default interface Blog {
+export type Blog = {
   id: number
-  featured: boolean
   title: 'string'
   url: 'string'
   imageUrl: 'string'

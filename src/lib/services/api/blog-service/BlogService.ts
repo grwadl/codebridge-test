@@ -1,6 +1,8 @@
+import { queryParser } from '@/lib/services/query-parser'
 import { getRequest } from '@/lib/utils/'
+import { BlogSearchParams } from '../../params/blog-params/types'
 import { BaseService } from '../BaseService'
-import Blog from './types/blog'
+import { Blog } from './types/blog'
 
 class BlogService extends BaseService<Blog> {
   baseUrl = import.meta.env.VITE_BLOG_API_BASE_URL
@@ -8,13 +10,14 @@ class BlogService extends BaseService<Blog> {
   async getOne(id: number): Promise<Blog> {
     return getRequest<Blog>(`${this.baseUrl}/${id}`)
   }
-  async get(opt?: Record<string, string>, query?: Record<string, string>): Promise<Blog[]> {
-    if (!query) return getRequest<Blog[]>(`${this.baseUrl}`, opt)
 
-    const url = new URL(this.baseUrl)
-    Object.entries(query).forEach(([key, value]) => url.searchParams.append(key, value))
+  async get(opt?: RequestInit, query?: BlogSearchParams): Promise<Blog[]> {
+    const url = new URL(this.baseUrl + '/blogs')
+    const params = query ? queryParser.stringify(query) : null
+    if (params) url.search = '?' + params
+
     return getRequest<Blog[]>(url, opt)
   }
 }
 
-export default new BlogService()
+export const blogService = new BlogService()

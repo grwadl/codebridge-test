@@ -3,5 +3,5 @@ export abstract class BaseService<T> {
 
   abstract getOne(id: number): Promise<T>
 
-  abstract get(opt: unknown): Promise<T[]>
+  abstract get(opt: RequestInit): Promise<T[]>
 }

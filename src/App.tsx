@@ -1,14 +1,18 @@
 import { ThemeProvider } from '@mui/material'
-import Header from './components/header/Header'
+import { Provider } from 'react-redux'
+import { Router } from './components/router/Router'
 import { theme } from './material.theme'
+import { store } from './redux'
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <div className="App" id="app">
-        <Header />
-      </div>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={theme}>
+        <div id="app">
+          <Router />
+        </div>
+      </ThemeProvider>
+    </Provider>
   )
 }
 
