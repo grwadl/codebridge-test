@@ -22,6 +22,14 @@
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
+
+    span {
+      font-size: inherit;
+
+      &.highlighted {
+        background-color: var(--accent-yellow);
+      }
+    }
   }
 
   .card-summary {
@@ -32,6 +40,14 @@
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+
+    span {
+      font-size: inherit;
+
+      &.highlighted {
+        background-color: var(--accent-yellow);
+      }
+    }
   }
 
   .date-wrapper {
@@ -66,9 +82,5 @@
       transform: translateX(6px);
       transition: transform 0.2s;
     }
-  }
-
-  .highlighted {
-    background-color: var(--accent-yellow);
   }
 }
