@@ -1,9 +1,21 @@
 export type Blog = {
-  uuid: string
-  description: string
-  image_url: string
-  snippet: string
-  source: string
-  title: string
-  url: string
+  id: number
+  title: 'string'
+  url: 'string'
+  imageUrl: 'string'
+  newsSite: 'string'
+  summary: 'string'
+  publishedAt: 'string'
+  launches: [
+    {
+      id: 'string'
+      provider: 'string'
+    }
+  ]
+  events: [
+    {
+      id: 'string'
+      provider: 'string'
+    }
+  ]
 }

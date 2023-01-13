@@ -14,6 +14,12 @@
   color: var(--main-gray);
 }
 
+a {
+  text-decoration: none;
+}
+
 #app {
+  max-width: 1440px;
+  margin: 0 auto;
   padding: 50px 75px;
 }

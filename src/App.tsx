@@ -8,7 +8,9 @@ function App() {
   return (
     <Provider store={store}>
       <ThemeProvider theme={theme}>
-        <Router />
+        <div id="app">
+          <Router />
+        </div>
       </ThemeProvider>
     </Provider>
   )
