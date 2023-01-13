@@ -1,10 +1,8 @@
 export const getRequest = async <T>(url: string | URL, opt?: RequestInit): Promise<T> => {
-  console.log(url)
-
   const response = await fetch(url, {
     method: 'GET',
     headers: {
-      'Content-Type': 'application/json'
+      accept: 'application/json'
     },
     ...opt
   })

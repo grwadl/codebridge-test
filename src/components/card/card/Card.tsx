@@ -1,15 +1,17 @@
 import placeholder from '@/assets/placeholder.png'
 import { LazyLoad } from '@/components/lazy-load/LazyLoad'
 import { Blog } from '@/lib/services/api'
-import { ISOdateToHumanReadable } from '@/lib/utils'
+import { ISOdateToHumanReadable, highlightText } from '@/lib/utils'
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt'
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday'
 import { Card, CardContent } from '@mui/material'
 import { Link } from 'react-router-dom'
 import './card.scss'
 
-const BlogCard = (props: Blog) => {
-  const { title, id, summary, imageUrl, publishedAt } = props
+type Props = Blog & { search: string }
+
+const BlogCard = (props: Props) => {
+  const { title, id, summary, imageUrl, publishedAt, search } = props
 
   const date = ISOdateToHumanReadable(publishedAt)
 
@@ -22,8 +24,8 @@ const BlogCard = (props: Blog) => {
             <CalendarTodayIcon height="13px" />
             <span className="date-text">{date}</span>
           </div>
-          <h5 className="card-title">{title}</h5>
-          <p className="card-summary">{summary}</p>
+          <h5 className="card-title">{highlightText(title, search)}</h5>
+          <p className="card-summary">{highlightText(summary, search)}</p>
           <div className="learn-more-wrap">
             <span className="learn-more-text">Learn more</span>
             <ArrowRightAltIcon className="learn-more-arrow" />

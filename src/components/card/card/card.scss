@@ -67,4 +67,8 @@
       transition: transform 0.2s;
     }
   }
+
+  .highlighted {
+    background-color: var(--accent-yellow);
+  }
 }

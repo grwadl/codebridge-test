@@ -1,21 +1,12 @@
 import { CardList } from '@/components/card/'
-import Header from '@/components/header/Header'
-import { fetchBlogs, useTypedDispatch, useTypedSelector } from '@/redux'
-import { useEffect } from 'react'
+import { SearchBar } from '@/components/searchbar/SearchBar'
 
 const Homepage = () => {
-  const dispatch = useTypedDispatch()
-  const { blogs } = useTypedSelector(({ blog }) => blog)
-
-  useEffect(() => {
-    dispatch(fetchBlogs(''))
-  }, [])
-
   return (
-    <div>
-      <Header />
-      <CardList blogs={blogs} />
-    </div>
+    <>
+      <SearchBar />
+      <CardList />
+    </>
   )
 }
 
