@@ -1,20 +1,13 @@
 import { CardList } from '@/components/card/'
-import Header from '@/components/header/Header'
-import { fetchBlogs, useTypedDispatch, useTypedSelector } from '@/redux'
-import { useEffect } from 'react'
+import { QueryObserver } from '@/components/isolated/QueryObserver'
+import { SearchBar } from '@/components/searchbar/SearchBar'
 
 const Homepage = () => {
-  const dispatch = useTypedDispatch()
-  const { blogs } = useTypedSelector(({ blog }) => blog)
-
-  useEffect(() => {
-    dispatch(fetchBlogs(''))
-  }, [])
-
   return (
     <div>
-      <Header />
-      <CardList blogs={blogs} />
+      <QueryObserver />
+      <SearchBar />
+      <CardList />
     </div>
   )
 }

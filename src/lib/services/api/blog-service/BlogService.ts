@@ -1,4 +1,5 @@
 import { getRequest } from '@/lib/utils/'
+import { searchParams } from '../../params/search-params'
 import { BaseService } from '../BaseService'
 import { Blog } from './types/blog'
 
@@ -10,10 +11,10 @@ class BlogService extends BaseService<Blog> {
   }
 
   async get(opt?: Record<string, string>, query?: Record<string, string>): Promise<Blog[]> {
-    const url = new URL(this.baseUrl + '/articles')
-    if (!query) return getRequest<Blog[]>(url, opt)
+    const url = new URL(this.baseUrl + '/blogs')
+    const params = searchParams.parseParams(query)
+    if (params) url.search = '?' + params
 
-    Object.entries(query).forEach(([key, value]) => value && url.searchParams.append(key, value))
     return getRequest<Blog[]>(url, opt)
   }
 }

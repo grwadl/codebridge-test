@@ -10,7 +10,9 @@ const cachedFetchBlogs = cached<Blog[]>()
 export const fetchBlogs = createAsyncThunk<ThunkFetchBlogsReturnType, string, AsyncThunkConfig>(
   BlogActions.GET_BLOGS,
   async (search) => {
-    const blogs = await cachedFetchBlogs(() => blogService.get({}, { _contains: search }), search)
+    const params = { title_contains: search, summary_contains: search }
+
+    const blogs = await cachedFetchBlogs(() => blogService.get({}, params), search)
 
     return { blogs }
   }
