@@ -4,7 +4,6 @@ import './card-list.scss'
 
 const CardList = () => {
   const { blogs } = useTypedSelector((state) => state.blog)
-  console.log('render posts')
 
   return (
     <ul className="blog-list">
