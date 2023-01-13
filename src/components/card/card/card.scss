@@ -1,5 +1,6 @@
 .card-item {
   --line-height: 24px;
+  transition-duration: 0.3s;
 
   .card-news-image {
     height: 217px;
@@ -31,5 +32,39 @@
     display: -webkit-box;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
+  }
+
+  .date-wrapper {
+    display: flex;
+    gap: 0 10px;
+    align-items: center;
+    margin-bottom: 24px;
+    opacity: 0.6;
+  }
+
+  .learn-more-wrap {
+    display: flex;
+    margin-top: 20px;
+    align-items: center;
+    gap: 0 6px;
+
+    .learn-more-text {
+      font-size: 16px;
+      line-height: var(--line-height);
+      font-weight: 700;
+    }
+
+    .learn-more-arrow {
+      transform: translateX(0px);
+      transition: transform 0.2s;
+    }
+  }
+  &:hover {
+    box-shadow: 5px 5px 5px black;
+
+    .learn-more-arrow {
+      transform: translateX(6px);
+      transition: transform 0.2s;
+    }
   }
 }

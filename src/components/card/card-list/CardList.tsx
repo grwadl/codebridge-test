@@ -10,7 +10,7 @@ const CardList = ({ blogs }: Props) => {
   return (
     <ul className="blog-list">
       {blogs?.map((blog) => (
-        <Card {...blog} />
+        <Card key={blog.id} {...blog} />
       ))}
     </ul>
   )
