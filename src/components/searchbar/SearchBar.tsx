@@ -1,7 +1,6 @@
 import { useDebounce } from '@/hooks'
 import { useFirstRender } from '@/hooks/useFirstRender'
-import { blogParams } from '@/lib/services/params'
-import { BlogSearchParams } from '@/lib/services/params/blog-params/types'
+import { BlogSearchParams, blogParams } from '@/lib/services/params'
 import { fetchBlogs, useTypedDispatch } from '@/redux'
 import { InputLabel } from '@mui/material'
 import React, { useState } from 'react'

@@ -8,8 +8,10 @@ import { Card, CardContent } from '@mui/material'
 import { Link } from 'react-router-dom'
 import './card.scss'
 
-const BlogCard = (props: Blog) => {
-  const { title, id, summary, imageUrl, publishedAt } = props
+type Props = Blog & { search: string }
+
+const BlogCard = (props: Props) => {
+  const { title, id, summary, imageUrl, publishedAt, search } = props
 
   const date = ISOdateToHumanReadable(publishedAt)
 

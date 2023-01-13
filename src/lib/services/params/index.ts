@@ -1,2 +1,2 @@
-export * from './blog-params/blog-params'
+export * from './blog-params/'
 export * from './search-params'

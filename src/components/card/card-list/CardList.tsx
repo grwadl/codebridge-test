@@ -8,7 +8,7 @@ const CardList = () => {
   return (
     <ul className="blog-list">
       {blogs?.map((blog) => (
-        <Card key={blog.id} {...blog} />
+        <Card search={searchedValue} key={blog.id} {...blog} />
       ))}
     </ul>
   )
