@@ -1,5 +1,5 @@
 import { blogParams } from '@/lib/services/params/blog-params/blog-params'
-import { changeQueryAction, fetchBlogs } from '@/redux/actions'
+import { fetchBlogs } from '@/redux/actions'
 import { createReducer } from '@reduxjs/toolkit'
 import { BlogReducer } from './types/initial-value'
 
@@ -16,11 +16,6 @@ export const blogReducer = createReducer(initialValue, (builder) => {
 
   builder.addCase(fetchBlogs.rejected, (state) => {
     state.isLoading = false
-  })
-
-  builder.addCase(changeQueryAction, (state, action) => {
-    state.searchedValue = action.payload
-    state.isLoading = true
   })
 
   builder.addCase(fetchBlogs.fulfilled, (state, action) => {

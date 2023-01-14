@@ -1,17 +1,16 @@
+import { NotFound } from '@/components/not-found/NotFound'
 import { Button } from '@mui/material'
 import { Link } from 'react-router-dom'
 import './not-found.scss'
 
-const NotFound = () => {
+const NotFoundPage = () => {
   return (
-    <div className="not-found">
-      <h1 className="not-found-numbers">404</h1>
-      <p className="not-found-description">Sorry, but i can't find resource you're looking for...</p>
+    <NotFound desc="Sorry, but i can't find resource you're looking for...">
       <Link className="not-found-link" to="/">
         <Button variant="contained">Go home</Button>
       </Link>
-    </div>
+    </NotFound>
   )
 }
 
-export { NotFound }
+export { NotFoundPage }
