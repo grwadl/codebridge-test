@@ -5,7 +5,7 @@ import './not-found.scss'
 
 const NotFoundPage = () => {
   return (
-    <NotFound desc="Sorry, but i can't find resource you're looking for...">
+    <NotFound className="flex-aligned padded-section" desc="Sorry, but i can't find resource you're looking for...">
       <Link className="not-found-link" to="/">
         <Button variant="contained">Go home</Button>
       </Link>

@@ -4,5 +4,6 @@ import { RouteObject } from 'react-router-dom'
 
 export const routes: RouteObject[] = [
   { index: true, element: <Homepage />, errorElement: <NotFoundPage /> },
-  { path: ':id', element: <BlogPage />, errorElement: <NotFoundPage /> }
+  { path: ':id', element: <BlogPage />, errorElement: <NotFoundPage /> },
+  { path: '*', element: <NotFoundPage /> }
 ]

@@ -17,7 +17,7 @@ const BlogCard = (props: Props) => {
   const date = ISOdateToHumanReadable(publishedAt)
 
   return (
-    <Link className="card-item" to={String(id)}>
+    <Link className="card-item fade-in" to={String(id)}>
       <Card sx={{ maxWidth: '100%' }}>
         <LazyLoad placeholder={placeholder} src={imageUrl} className="card-news-image" alt={title} />
         <CardContent sx={{ padding: '25px 20px' }}>

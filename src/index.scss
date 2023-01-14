@@ -4,6 +4,17 @@
   --main-gray: #363636;
   --accent-yellow: #fff619;
   --light-gray: #e5e5e5;
+
+  --max-screen-width: 1440px;
+  --padded-pixels: 15px;
+
+  @include media-min(md) {
+    --padded-pixels: 35px;
+  }
+
+  @include media-min(xl) {
+    --padded-pixels: 75px;
+  }
 }
 
 * {
@@ -27,15 +38,11 @@ a {
 
 #app {
   height: 100%;
-  max-width: 1440px;
+}
+
+.padded-section {
+  max-width: var(--max-screen-width);
   margin: 0 auto;
-  padding: 25px 15px;
-
-  @include media-min(md) {
-    padding: 30px 35px;
-  }
-
-  @include media-min(xl) {
-    padding: 50px 75px;
-  }
+  padding-left: var(--padded-pixels);
+  padding-right: var(--padded-pixels);
 }
