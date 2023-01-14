@@ -1,6 +1,7 @@
 import { NotFound } from '@/components/not-found/NotFound'
 import { useTypedSelector } from '@/redux'
 import { Card } from '../card/Card'
+import { CardSkeletonList } from '../skeleton-list/CardSkeletonList'
 import './card-list.scss'
 
 const CardList = () => {
@@ -11,9 +12,11 @@ const CardList = () => {
 
   return (
     <ul className="blog-list">
-      {blogs?.map((blog) => (
-        <Card search={searchedValue} key={blog.id} {...blog} />
-      ))}
+      {isLoading ? (
+        <CardSkeletonList count={6} />
+      ) : (
+        blogs?.map((blog) => <Card search={searchedValue} key={blog.id} {...blog} />)
+      )}
     </ul>
   )
 }

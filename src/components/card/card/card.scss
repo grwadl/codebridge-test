@@ -75,7 +75,7 @@
       transition: transform 0.2s;
     }
   }
-  &:hover {
+  &:not(.skeleton):hover {
     box-shadow: 5px 5px 5px black;
 
     .learn-more-arrow {
