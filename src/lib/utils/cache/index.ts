@@ -1,7 +1,7 @@
 import type { CacheReturn } from './types/cache-return'
 import type { CachedClosure } from './types/cached-closure'
 
-export const cached = <T = unknown>(lifeTime = 120000): CacheReturn<T> => {
+export const cached = <T = unknown>(lifeTime = 300000): CacheReturn<T> => {
   const startOfCaching = Date.now()
   const cached = new Map<string, T>()
 

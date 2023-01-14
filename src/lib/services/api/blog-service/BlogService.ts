@@ -8,7 +8,7 @@ class BlogService extends BaseService<Blog> {
   baseUrl = import.meta.env.VITE_BLOG_API_BASE_URL
 
   async getOne(id: number): Promise<Blog> {
-    return getRequest<Blog>(`${this.baseUrl}/${id}`)
+    return getRequest<Blog>(`${this.baseUrl}/blogs/${id}`)
   }
 
   async get(opt?: RequestInit, query?: BlogSearchParams): Promise<Blog[]> {

@@ -22,7 +22,7 @@ const LazyLoad = (props: Props) => {
   useLazyLoading(ref, onIntersection)
 
   return (
-    <div className={`lazy-load-container ${className}`} ref={ref}>
+    <div className={`lazy-load-container ${className ?? ''}`} ref={ref}>
       {isIntersecting && (
         <>
           <img
