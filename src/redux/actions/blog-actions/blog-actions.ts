@@ -2,9 +2,8 @@ import { Blog, blogService } from '@/lib/services/api'
 import { blogParams } from '@/lib/services/params'
 import { cached } from '@/lib/utils'
 import { AsyncThunkConfig } from '@/redux/types'
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
+import { createAsyncThunk } from '@reduxjs/toolkit'
 import { changeOrder } from './helpers'
-import { ChangeQueryAction } from './types'
 import { BlogActions } from './types/blog-action.enum'
 import { ThunkFetchBlogsReturnType } from './types/return-type'
 
@@ -24,8 +23,4 @@ const fetchBlogs = createAsyncThunk<ThunkFetchBlogsReturnType, string, AsyncThun
   }
 )
 
-const changeQueryAction = createAction<ChangeQueryAction>(BlogActions.CHANGE_QUERY, (query) => {
-  return { payload: query }
-})
-
-export { fetchBlogs, changeQueryAction }
+export { fetchBlogs }
