@@ -5,7 +5,7 @@ import { BaseService } from '../BaseService'
 import { Blog } from './types/blog'
 
 class BlogService extends BaseService<Blog> {
-  baseUrl = import.meta.env.VITE_BLOG_API_BASE_URL
+  baseUrl = import.meta.env.VITE_BLOG_API_BASE_URL ?? 'https://api.spaceflightnewsapi.net/v3'
 
   async getOne(id: number): Promise<Blog> {
     return getRequest<Blog>(`${this.baseUrl}/blogs/${id}`)
