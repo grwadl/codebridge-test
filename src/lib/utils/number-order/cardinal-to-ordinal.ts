@@ -1,5 +1,5 @@
 import { Ordinal } from './types/ordinal.enum'
-//TODO rewrite
+
 export const cardinalToOrdinalNumber = (cardinal: string): string => {
   if (!cardinal) return ''
 
