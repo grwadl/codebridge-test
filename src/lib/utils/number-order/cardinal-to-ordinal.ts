@@ -4,7 +4,13 @@ export const cardinalToOrdinalNumber = (cardinal: string): string => {
   if (!cardinal) return ''
 
   const lastNumber = String(cardinal).charAt(cardinal.length - 1)
-  if (!(lastNumber in Ordinal)) return lastNumber + 'th'
+  const firstNumber = String(cardinal).charAt(0)
 
-  return lastNumber + Ordinal[+lastNumber as keyof typeof Ordinal]
+  const teenth = String(cardinal).length === 2 && firstNumber === '1'
+
+  if (teenth) return cardinal + 'th'
+
+  if (!(lastNumber in Ordinal)) return cardinal + 'th'
+
+  return cardinal + Ordinal[+lastNumber as keyof typeof Ordinal]
 }

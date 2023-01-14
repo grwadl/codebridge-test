@@ -2,8 +2,8 @@ import { Blog, blogService } from '@/lib/services/api'
 import { blogParams } from '@/lib/services/params'
 import { cached } from '@/lib/utils'
 import { AsyncThunkConfig } from '@/redux/types'
-import { createAction, createAsyncThunk } from '@reduxjs/toolkit'
-import { ChangeQueryAction } from './types'
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { changeOrder } from './helpers'
 import { BlogActions } from './types/blog-action.enum'
 import { ThunkFetchBlogsReturnType } from './types/return-type'
 
@@ -14,14 +14,13 @@ const fetchBlogs = createAsyncThunk<ThunkFetchBlogsReturnType, string, AsyncThun
   async (searchedValue) => {
     const params = blogParams.generateSearchTitleAndDescription(searchedValue) ?? undefined
 
-    const blogs = await cachedFetchBlogs(() => blogService.get({}, params), searchedValue)
+    const fetchedBlogs = await cachedFetchBlogs(
+      () => blogService.get({}, params).then((blogs) => changeOrder({ blogs, searchedValue })),
+      searchedValue
+    )
 
-    return { blogs, searchedValue }
+    return { blogs: fetchedBlogs, searchedValue }
   }
 )
 
-const changeQueryAction = createAction<ChangeQueryAction>(BlogActions.CHANGE_QUERY, (query) => {
-  return { payload: query }
-})
-
-export { changeQueryAction, fetchBlogs }
+export { fetchBlogs }
