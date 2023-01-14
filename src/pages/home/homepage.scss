@@ -1,0 +1,11 @@
+@import '../../mixins/media-queries.scss';
+
+.homepage {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  @include media-min(xl) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+}

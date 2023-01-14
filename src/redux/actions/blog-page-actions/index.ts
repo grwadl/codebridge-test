@@ -1,2 +1,2 @@
-export * from './blog-actions'
 export * from './blog-page-actions'
+export * from './types'

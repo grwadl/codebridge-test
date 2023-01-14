@@ -8,7 +8,7 @@ const CardList = () => {
   const { blogs, isLoading, searchedValue } = useTypedSelector((state) => state.blog)
 
   if (!isLoading && !blogs.length)
-    return <NotFound className="not-found-blogs" desc="Sorry, but i cant find any related blogs..." />
+    return <NotFound className="not-found-blogs" desc="Sorry, but i can't find any related blogs..." />
 
   return (
     <ul className="blog-list">
