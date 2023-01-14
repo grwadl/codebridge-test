@@ -1,10 +1,10 @@
 import placeholder from '@/assets/placeholder.png'
 import { Loader } from '@/components/UI/loader/Loader'
 import { LazyLoad } from '@/components/lazy-load/LazyLoad'
-import { closeBlogPage, fetchOneBlog, useTypedDispatch, useTypedSelector } from '@/redux'
+import { useOneBlog } from '@/hooks/useOneBlog'
+import { useTypedSelector } from '@/redux'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import { Card } from '@mui/material'
-import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import './blog-page.scss'
 
@@ -13,19 +13,11 @@ type Params = {
 }
 
 const BlogPage = () => {
-  const dispatch = useTypedDispatch()
   const navigate = useNavigate()
   const { id } = useParams<Params>()
   const { isLoading, openedBlog } = useTypedSelector((state) => state.blogPage)
 
-  useEffect(() => {
-    if (!id) return
-
-    dispatch(fetchOneBlog(id))
-    return () => {
-      dispatch(closeBlogPage())
-    }
-  }, [id])
+  useOneBlog(id)
 
   if (isLoading) return <Loader />
 
