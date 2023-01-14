@@ -1,10 +1,12 @@
 import placeholder from '@/assets/placeholder.png'
 import { Loader } from '@/components/UI/loader/Loader'
 import { LazyLoad } from '@/components/lazy-load/LazyLoad'
+import { NotFound } from '@/components/not-found/NotFound'
 import { useOneBlog } from '@/hooks/useOneBlog'
+import { blogParams } from '@/lib/services/params'
 import { useTypedSelector } from '@/redux'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
-import { Card } from '@mui/material'
+import { Button, Card } from '@mui/material'
 import { useNavigate, useParams } from 'react-router-dom'
 import './blog-page.scss'
 
@@ -16,12 +18,26 @@ const BlogPage = () => {
   const navigate = useNavigate()
   const { id } = useParams<Params>()
   const { isLoading, openedBlog } = useTypedSelector((state) => state.blogPage)
+  const { searchedValue } = useTypedSelector((state) => state.blog)
+
+  const goBackFunc = () => {
+    const paramsOrNull = blogParams.generateSearchTitleAndDescription(searchedValue)
+    const newParams = paramsOrNull ? '?' + paramsOrNull : ''
+    navigate('/' + newParams)
+  }
 
   useOneBlog(id)
 
   if (isLoading) return <Loader />
 
-  if (!isLoading && !openedBlog) throw new Error('not found')
+  if (!isLoading && !openedBlog)
+    return (
+      <NotFound className="not-found-blog padded-section" desc="Sorry, but i can not find this article...">
+        <Button sx={{ marginTop: '15px' }} variant="contained" onClick={goBackFunc}>
+          Go home
+        </Button>
+      </NotFound>
+    )
 
   return (
     <div className="blog">
@@ -41,7 +57,7 @@ const BlogPage = () => {
           <p className="blog-card-desc">{openedBlog?.summary}</p>
         </Card>
       </div>
-      <div className="padded-section go-back text-arrow" onClick={() => navigate(-1)}>
+      <div className="padded-section go-back text-arrow" onClick={goBackFunc}>
         <KeyboardBackspaceIcon className="go-back-icon" />
         <span className="go-back-text">Back to Homepage</span>
       </div>
