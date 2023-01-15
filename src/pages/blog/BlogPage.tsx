@@ -4,6 +4,7 @@ import { LazyLoad } from '@/components/lazy-load/LazyLoad'
 import { NotFound } from '@/components/not-found/NotFound'
 import { useOneBlog } from '@/hooks/useOneBlog'
 import { blogParams } from '@/lib/services/params'
+import { queryParser } from '@/lib/services/query-parser'
 import { useTypedSelector } from '@/redux'
 import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace'
 import { Button, Card } from '@mui/material'
@@ -22,7 +23,9 @@ const BlogPage = () => {
 
   const goBackFunc = () => {
     const paramsOrNull = blogParams.generateSearchTitleAndDescription(searchedValue)
-    const newParams = paramsOrNull ? '?' + paramsOrNull : ''
+    const newParams = paramsOrNull ? '?' + queryParser.stringify(paramsOrNull) : ''
+    console.log(newParams)
+
     navigate('/' + newParams)
   }
 
