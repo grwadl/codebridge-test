@@ -24,7 +24,6 @@ const BlogPage = () => {
   const goBackFunc = () => {
     const paramsOrNull = blogParams.generateSearchTitleAndDescription(searchedValue)
     const newParams = paramsOrNull ? '?' + queryParser.stringify(paramsOrNull) : ''
-    console.log(newParams)
 
     navigate('/' + newParams)
   }
